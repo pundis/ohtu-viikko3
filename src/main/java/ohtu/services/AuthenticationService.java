@@ -40,20 +40,14 @@ public class AuthenticationService {
 
     private boolean invalid(String username, String password) {
         if (password.length() > 7 && username.length() > 2) {         
-            char c;  
-            int count = 0;   
+            char c; int count = 0;   
             for (int i = 0; i < password.length(); i++) {  
                 c = password.charAt(i);  
                 if (!Character.isLetterOrDigit(c)) {          
                     return false;  
-                } else if (Character.isDigit(c)) {  
-                    count++;     
-                }  
+                } else if (Character.isDigit(c)) count++;  
             }  
-            if (count < 1)   {     
-                return true;  
-            }     
-            return false;
+            return (count < 1);
         }  
         return true;  
     }  
